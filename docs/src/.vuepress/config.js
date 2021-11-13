@@ -54,6 +54,7 @@ module.exports = {
       '/staking/',
       '/governance/',
       '/other-features/',
+      '/osmo/',
       '/network/',
       '/validators/',
       '/tutorials/',

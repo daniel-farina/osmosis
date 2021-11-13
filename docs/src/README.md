@@ -3,15 +3,11 @@
 
 ## Get Started
 
-
 ## Reference Docs
-
 
 ## Other Resources
 
 
-## Languages
-
-
 ## Contribute
 
+Please see this [this file](https://github.com/daniel-farina/osmosis/blob/main/docs/src/DOCS_README.md) for instructions on contributing to the documentation site.
