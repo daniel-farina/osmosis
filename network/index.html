@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     
-    <link rel="preload" href="/assets/css/0.styles.7fad836b.css" as="style"><link rel="preload" href="/assets/js/app.2685bd60.js" as="script"><link rel="preload" href="/assets/js/2.a5d7ed46.js" as="script"><link rel="preload" href="/assets/js/18.a7af2f2b.js" as="script"><link rel="prefetch" href="/assets/js/10.bde10a03.js"><link rel="prefetch" href="/assets/js/11.92903aa3.js"><link rel="prefetch" href="/assets/js/12.2198cb60.js"><link rel="prefetch" href="/assets/js/13.71f13be3.js"><link rel="prefetch" href="/assets/js/14.8b813ee7.js"><link rel="prefetch" href="/assets/js/15.662f2e28.js"><link rel="prefetch" href="/assets/js/16.d4f2bcf9.js"><link rel="prefetch" href="/assets/js/17.c3079b48.js"><link rel="prefetch" href="/assets/js/19.396fc98c.js"><link rel="prefetch" href="/assets/js/20.f10b5802.js"><link rel="prefetch" href="/assets/js/21.b157854a.js"><link rel="prefetch" href="/assets/js/3.535b148c.js"><link rel="prefetch" href="/assets/js/4.c625b789.js"><link rel="prefetch" href="/assets/js/5.caa00a1d.js"><link rel="prefetch" href="/assets/js/6.093425f4.js"><link rel="prefetch" href="/assets/js/7.4c819fe7.js"><link rel="prefetch" href="/assets/js/8.e3d27382.js"><link rel="prefetch" href="/assets/js/9.ff961d1a.js">
+    <link rel="preload" href="/assets/css/0.styles.7fad836b.css" as="style"><link rel="preload" href="/assets/js/app.9e2a02d8.js" as="script"><link rel="preload" href="/assets/js/2.a5d7ed46.js" as="script"><link rel="preload" href="/assets/js/18.02afb35a.js" as="script"><link rel="prefetch" href="/assets/js/10.bde10a03.js"><link rel="prefetch" href="/assets/js/11.92903aa3.js"><link rel="prefetch" href="/assets/js/12.2198cb60.js"><link rel="prefetch" href="/assets/js/13.71f13be3.js"><link rel="prefetch" href="/assets/js/14.8b813ee7.js"><link rel="prefetch" href="/assets/js/15.662f2e28.js"><link rel="prefetch" href="/assets/js/16.d4f2bcf9.js"><link rel="prefetch" href="/assets/js/17.c3079b48.js"><link rel="prefetch" href="/assets/js/19.396fc98c.js"><link rel="prefetch" href="/assets/js/20.f10b5802.js"><link rel="prefetch" href="/assets/js/21.b157854a.js"><link rel="prefetch" href="/assets/js/3.535b148c.js"><link rel="prefetch" href="/assets/js/4.c625b789.js"><link rel="prefetch" href="/assets/js/5.caa00a1d.js"><link rel="prefetch" href="/assets/js/6.093425f4.js"><link rel="prefetch" href="/assets/js/7.4c819fe7.js"><link rel="prefetch" href="/assets/js/8.e3d27382.js"><link rel="prefetch" href="/assets/js/9.ff961d1a.js">
     <link rel="stylesheet" href="/assets/css/0.styles.7fad836b.css">
   </head>
   <body>
@@ -32,7 +32,78 @@
 </code></pre></div><p><strong>Launch Osmosis</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>osmosisd init yourmonikerhere
 <span class="token function">wget</span> -O ~/.osmosisd/config/genesis.json https://github.com/osmosis-labs/networks/raw/main/osmosis-1/genesis.json
 osmosisd start
-</code></pre></div><p>More Nodes ==&gt; More Network</p> <p>More Network ==&gt; Faster Sync</p> <p>Faster Sync ==&gt; Less Developer Friction</p> <p>Less Developer Friction ==&gt; More Osmosis</p> <p>Thank you for supporting a healthy blockchain network and community by running an Osmosis node!</p> <h2 id="joining-mainnet"><a href="#joining-mainnet" class="header-anchor">#</a> Joining Mainnet</h2> <h2 id="joining-testnet"><a href="#joining-testnet" class="header-anchor">#</a> Joining Testnet</h2> <h2 id="relayers"><a href="#relayers" class="header-anchor">#</a> Relayers</h2></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>More Nodes ==&gt; More Network</p> <p>More Network ==&gt; Faster Sync</p> <p>Faster Sync ==&gt; Less Developer Friction</p> <p>Less Developer Friction ==&gt; More Osmosis</p> <p>Thank you for supporting a healthy blockchain network and community by running an Osmosis node!</p> <h2 id="joining-mainnet"><a href="#joining-mainnet" class="header-anchor">#</a> Joining Mainnet</h2> <h2 id="joining-testnet"><a href="#joining-testnet" class="header-anchor">#</a> Joining Testnet</h2> <p>Start by ensuring your system is up to date</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> upgrade
+</code></pre></div><p>Install tools if not already installed (git, gcc, make, ufw, etc.)</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> build-essential ufw <span class="token function">curl</span> jq snapd --yes
+</code></pre></div><p>Install go</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">wget</span> -q -O - https://git.io/vQhTU <span class="token operator">|</span> <span class="token function">bash</span> -s -- --version <span class="token number">1.17</span>.2
+</code></pre></div><p>After installed, open new terminal to prevent issues</p> <p>Export environmental variables</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">'export GOPATH=&quot;$HOME/go&quot;'</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">'export GOBIN=&quot;$GOPATH/bin&quot;'</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">'export PATH=&quot;$GOBIN:$PATH&quot;'</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">source</span> ~/.profile
+</code></pre></div><p>Run the following to clone the osmosis repo</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>
+<span class="token function">git</span> clone https://github.com/osmosis-labs/osmosis
+<span class="token builtin class-name">cd</span> osmosis
+<span class="token function">git</span> checkout v3.2.0_with_cache
+<span class="token function">make</span> <span class="token function">install</span>
+</code></pre></div><p>You have now installed the Osmosis Daemon (osmosisd). Use osmosisd to initialize your node with the following (replace the NODE_NAME with a name of your choosing):</p> <div class="language-bash extra-class"><pre class="language-bash"><code>osmosisd init NODE_NAME --chain-id<span class="token operator">=</span>osmosis-testnet-0
+</code></pre></div><p>We now need to open the config.toml to edit the seed list</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>/.osmosisd/config
+<span class="token function">nano</span> config.toml
+</code></pre></div><p>Use page down or arrow keys to get to the line that says seeds = &quot;&quot; and replace it with the following</p> <div class="language-bash extra-class"><pre class="language-bash"><code>seeds <span class="token operator">=</span> <span class="token string">&quot;4eaed17781cd948149098d55f80a28232a365236@testmosis.blockpane.com:26656&quot;</span>
+</code></pre></div><p>Then pres Ctrl+O, then enter to save, then Ctrl+X to exit</p> <p>We will now set up cosmovisor to ensure the upgrade happens flawlessly. To install Cosmovisor:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>
+<span class="token function">git</span> clone https://github.com/cosmos/cosmos-sdk
+<span class="token builtin class-name">cd</span> cosmos-sdk
+<span class="token function">git</span> checkout v0.42.9
+<span class="token function">make</span> cosmovisor
+<span class="token function">cp</span> cosmovisor/cosmovisor <span class="token variable">$GOPATH</span>/bin/cosmovisor
+<span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>
+</code></pre></div><p>After this, create the following directories with the following commands</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> -p ~/.osmosisd
+<span class="token function">mkdir</span> -p ~/.osmosisd/cosmovisor
+<span class="token function">mkdir</span> -p ~/.osmosisd/cosmovisor/genesis
+<span class="token function">mkdir</span> -p ~/.osmosisd/cosmovisor/genesis/bin
+<span class="token function">mkdir</span> -p ~/.osmosisd/cosmovisor/upgrades
+</code></pre></div><p>Next, run the following commands to set the environment variables</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">&quot;# Setup Cosmovisor&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export DAEMON_NAME=osmosisd&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export DAEMON_HOME=<span class="token environment constant">$HOME</span>/.osmosisd&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export DAEMON_ALLOW_DOWNLOAD_BINARIES=false&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export DAEMON_LOG_BUFFER_SIZE=512&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export DAEMON_RESTART_AFTER_UPGRADE=true&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.profile
+<span class="token builtin class-name">source</span> ~/.profile
+</code></pre></div><p>Download and replace the genesis file with the following commands</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>/.osmosisd/config
+<span class="token function">wget</span> https://github.com/osmosis-labs/networks/raw/unity/v4/osmosis-1/upgrades/v4/testnet/genesis.tar.bz2
+<span class="token function">tar</span> -xjf genesis.tar.bz2
+</code></pre></div><p>Next, copy the current osmosisd binary into the cosmovisor/genesis folder with the following command</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> <span class="token variable">$GOPATH</span>/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
+</code></pre></div><p>To check your work, ensure the version of cosmovisor and osmosisd are the same</p> <div class="language-bash extra-class"><pre class="language-bash"><code>cosmovisor version
+osmosisd version
+</code></pre></div><p>These two command should both output 3.1.0-23-g517562d</p> <p>Before we start cosmovisor, lets prep the upgrade to v4.0.0-rc1 with the following commands</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> -p ~/.osmosisd/cosmovisor/upgrades/v4/bin
+<span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>/osmosis
+<span class="token function">git</span> checkout v4.0.0
+<span class="token function">make</span> build
+<span class="token function">cp</span> build/osmosisd ~/.osmosisd/cosmovisor/upgrades/v4/bin
+<span class="token builtin class-name">cd</span> <span class="token environment constant">$HOME</span>
+</code></pre></div><p>Use the following command to ensure the validator file is in the gensesis state</p> <div class="language-bash extra-class"><pre class="language-bash"><code>osmosisd unsafe-reset-all
+</code></pre></div><p>While we could start cosmovisor now with &quot;cosmovisor start&quot;, lets set up a service with the following commands to allow it to run in the background as well as restart automatically if it runs into any problems!</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">&quot;[Unit]
+Description=Cosmovisor daemon
+After=network-online.target
+[Service]
+Environment=&quot;</span><span class="token assign-left variable">DAEMON_NAME</span><span class="token operator">=</span>osmosisd<span class="token string">&quot;
+Environment=&quot;</span><span class="token assign-left variable">DAEMON_HOME</span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">HOME</span>}</span>/.osmosisd<span class="token string">&quot;
+Environment=&quot;</span><span class="token assign-left variable">DAEMON_RESTART_AFTER_UPGRADE</span><span class="token operator">=</span>true<span class="token string">&quot;
+Environment=&quot;</span><span class="token assign-left variable">DAEMON_ALLOW_DOWNLOAD_BINARIES</span><span class="token operator">=</span>false<span class="token string">&quot;
+Environment=&quot;</span><span class="token assign-left variable">DAEMON_LOG_BUFFER_SIZE</span><span class="token operator">=</span><span class="token number">512</span><span class="token string">&quot;
+User=<span class="token environment constant">$USER</span>
+ExecStart=<span class="token variable">${<span class="token environment constant">HOME</span>}</span>/go/bin/cosmovisor start
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+[Install]
+WantedBy=multi-user.target
+&quot;</span> <span class="token operator">&gt;</span>cosmovisor.service
+</code></pre></div><p>Move this new file to the systemd directory</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">mv</span> cosmovisor.service /lib/systemd/system/cosmovisor.service
+</code></pre></div><p>Finally, run the following commands</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl start cosmovisor
+</code></pre></div><p>Check the status of your service</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl status cosmovisor
+</code></pre></div><p>To see live logs of your service</p> <div class="language-bash extra-class"><pre class="language-bash"><code>journalctl -u cosmovisor -f
+</code></pre></div><p>The process should initialize and get to block 1122200, where it will automatically upgrade to v4.0.0-rc1</p> <h2 id="relayers"><a href="#relayers" class="header-anchor">#</a> Relayers</h2></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/other-features/" class="prev">
         Other Features
@@ -41,6 +112,6 @@ osmosisd start
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.2685bd60.js" defer></script><script src="/assets/js/2.a5d7ed46.js" defer></script><script src="/assets/js/18.a7af2f2b.js" defer></script>
+    <script src="/assets/js/app.9e2a02d8.js" defer></script><script src="/assets/js/2.a5d7ed46.js" defer></script><script src="/assets/js/18.02afb35a.js" defer></script>
   </body>
 </html>
