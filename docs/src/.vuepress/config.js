@@ -25,7 +25,7 @@ module.exports = {
    *
    * ref：https://vuepress.vuejs.org/config/#basic-config
    */
-  base: "/osmosis/",
+  base: "/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -110,38 +110,6 @@ module.exports = {
         // initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
       }
     ],
-
-    sidebarworks: [
-      '/intro/',
-      '/network/',
-    ],
-    sidebarold: {
-      auto: false,
-      '/': [
-        {
-          title: 'Introduction',
-          collapsable: false,
-          children: [
-            '/intro/',
-            '/intro/getting-started',
-          ]
-        },
-        {
-          title: 'Networks',
-          collapsable: false,
-          auto: false,
-          children: [
-            '/network/osmosisd-setup',
-            '/network/mainnet-setup',
-            // '/network/joining-mainnet',
-            // '/network/joining-testnet',
-            // '/network/cosmovisor',
-            // '/network/relayers',
-          ]
-        }
-      ],
-
-    }
   },
 
   /**
@@ -152,18 +120,3 @@ module.exports = {
     '@vuepress/plugin-medium-zoom',
   ]
 };
-
-function getSideBar(folder, title) {
-  const extension = [".md"];
-
-  const files = fs
-      .readdirSync(path.join(`${__dirname}/../${folder}`))
-      .filter(
-          (item) =>
-              item.toLowerCase() != "readme.md" &&
-              fs.statSync(path.join(`${__dirname}/../${folder}`, item)).isFile() &&
-              extension.includes(path.extname(item))
-      );
-
-  return [{ title: title, children: ["", ...files] }];
-}
