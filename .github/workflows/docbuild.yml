@@ -16,6 +16,10 @@ jobs:
           npm install
           npm run build
 
+      - name: List files in directory
+        run: |
+          ls
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
