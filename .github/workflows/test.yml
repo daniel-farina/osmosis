@@ -1,24 +1,22 @@
-name: Tests / Code Coverage
-#  Tests / Code Coverage workflow runs unit tests and uploads a code coverage report
-#  This workflow is run on pushes to master & every Pull Requests where a .go, .mod, .sum have been changed
+name: Build and Deploy
 on:
-  pull_request:
   push:
     branches:
-      - main
+      - docs
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-go@v2.1.4
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and Build 🔧 # This will create version inside the 'build' folder.
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          go-version: 1.17
-      - name: Display go version
-        run: go version
-      - name: Run all tests
-        run: go test -mod=readonly -timeout 30m -coverprofile=coverage.txt -tags='norace' -covermode=atomic `go list ./... | grep -v simapp`
-      - name: Codecov
-        uses: codecov/codecov-action@v1.5.2
-      - name: Run simulation
-        run: go test ./simapp
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
