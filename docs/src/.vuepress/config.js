@@ -20,6 +20,12 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
+  /**
+   * The base URL when deployed to Github Pages
+   *
+   * ref：https://vuepress.vuejs.org/config/#basic-config
+   */
+  base: "/osmosis/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
