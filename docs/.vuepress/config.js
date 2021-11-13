@@ -1,4 +1,4 @@
-const { description } = require('../../package')
+const { description } = require('../package')
 
 module.exports = {
   /**
@@ -47,7 +47,7 @@ module.exports = {
       },
 
     ],
-
+    sidebarDepth: 1,
     sidebar: [
       '/intro/',
       '/liquidity/',
