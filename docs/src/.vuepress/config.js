@@ -25,7 +25,7 @@ module.exports = {
    *
    * ref：https://vuepress.vuejs.org/config/#basic-config
    */
-  base: "/",
+  base: "/osmosis/",
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -34,7 +34,7 @@ module.exports = {
    */
   themeConfig: {
     displayAllHeaders: true,
-    logo: '/OSMOLogo.png',
+    logo: 'OSMOLogo.png',
     repo: '',
     editLinks: false,
     docsDir: '',
@@ -42,73 +42,21 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Intro',
-        link: '/intro/',
+        text: 'Home',
+        link: '/',
       },
-      {
-        text: 'Config',
-        link: '/config/'
-      }
+
     ],
 
     sidebar: [
-      {
-        path: '/intro/',      // optional, link of the title, which should be an absolute path and must exist
-        collapsable: false, // optional, defaults to true
-        sidebarDepth: 1,    // optional, defaults to 1
-        children: [
-          '/intro/'
-        ]
-      },
-      {
-        collapsable: false,
-        children: [
-          '/liquidity/',
-        ],
-        //initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/staking/',
-        ],
-        //initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/governance/',
-        ],
-        //initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/other-features/',
-        ],
-        //initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/network/',
-        ],
-       // initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/validators/',
-        ],
-        // initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      },
-      {
-        collapsable: false,
-        children: [
-          '/tutorials/',
-        ],
-        // initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
-      }
+      '/intro/',
+      '/liquidity/',
+      '/staking/',
+      '/governance/',
+      '/other-features/',
+      '/network/',
+      '/validators/',
+      '/tutorials/',
     ],
   },
 
