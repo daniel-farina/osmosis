@@ -63,17 +63,7 @@ wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.17.2
 
 After installed, open new terminal to prevent issues
 
-Export environmental variables
-
-```bash
-echo 'export GOPATH="$HOME/go"' >> ~/.profile
-echo 'export GOBIN="$GOPATH/bin"' >> ~/.profile
-echo 'export PATH="$GOBIN:$PATH"' >> ~/.profile
-source ~/.profile
-```
-
 Run the following to clone the osmosis repo
-
 
 ```bash
 cd $HOME
@@ -84,7 +74,6 @@ make install
 ```
 
 You have now installed the Osmosis Daemon (osmosisd). Use osmosisd to initialize your node with the following (replace the NODE_NAME with a name of your choosing):
-
 
 ```bash
 osmosisd init NODE_NAME --chain-id=osmosis-testnet-0
@@ -120,7 +109,6 @@ cd $HOME
 After this, create the following directories with the following commands
 
 ```bash
-mkdir -p ~/.osmosisd
 mkdir -p ~/.osmosisd/cosmovisor
 mkdir -p ~/.osmosisd/cosmovisor/genesis
 mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
@@ -228,6 +216,8 @@ journalctl -u cosmovisor -f
 
 The process should initialize and get to block 1122200, where it will automatically upgrade to v4.0.0-rc1
 
+
+At around block height 1128853, when reading the logs you will see many notifications of "slashing and jailing validator". This is due to fact that many validators did not participate in the testnet and therefore get jailed at the same time (approx 30,000 blocks after the upgrade). In my experience, this may cause your node to reset due to a memory error. As long as you set up the service above, it will automatically reset and eventually get passed this difficult block. 
 
 ## Relayers
 
