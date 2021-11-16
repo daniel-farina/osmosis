@@ -42,28 +42,28 @@ Thank you for supporting a healthy blockchain network and community by running a
 
 ## Joining Testnet
 
-Start by ensuring your system is up to date
+Start by ensuring your system is up to date:
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-Install tools if not already installed (git, gcc, make, ufw, etc.)
+Install tools if not already installed (git, gcc, make, etc.):
 
 ```bash
 sudo apt install git build-essential ufw curl jq snapd --yes
 ```
 
-Install go
+Install go:
 
 ```bash
 wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.17.2
 ```
 
-After installed, open new terminal to prevent issues
+After installed, open new terminal to properly load go
 
-Run the following to clone the osmosis repo
+Run the following to clone the osmosis repo:
 
 ```bash
 cd $HOME
@@ -79,14 +79,14 @@ You have now installed the Osmosis Daemon (osmosisd). Use osmosisd to initialize
 osmosisd init NODE_NAME --chain-id=osmosis-testnet-0
 ```
 
-We now need to open the config.toml to edit the seed list
+We now need to open the config.toml to edit the seed list with the following:
 
 ```bash
 cd $HOME/.osmosisd/config
 nano config.toml
 ```
 
-Use page down or arrow keys to get to the line that says seeds = "" and replace it with the following
+Use page down or arrow keys to get to the line that says seeds = "" and replace it with the following:
 
 ```bash
 seeds = "4eaed17781cd948149098d55f80a28232a365236@testmosis.blockpane.com:26656"
@@ -106,7 +106,7 @@ cp cosmovisor/cosmovisor $GOPATH/bin/cosmovisor
 cd $HOME
 ```
 
-After this, create the following directories with the following commands
+After this, create the required directories with the following commands:
 
 ```bash
 mkdir -p ~/.osmosisd/cosmovisor
@@ -115,7 +115,7 @@ mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
 mkdir -p ~/.osmosisd/cosmovisor/upgrades
 ```
 
-Next, run the following commands to set the environment variables
+Next, run the following commands to set the environment variables:
 
 ```bash
 echo "# Setup Cosmovisor" >> ~/.profile
@@ -127,7 +127,7 @@ echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.profile
 source ~/.profile
 ```
 
-Download and replace the genesis file with the following commands
+Download and replace the genesis file:
 
 ```bash
 cd $HOME/.osmosisd/config
@@ -135,13 +135,13 @@ wget https://github.com/osmosis-labs/networks/raw/unity/v4/osmosis-1/upgrades/v4
 tar -xjf genesis.tar.bz2
 ```
 
-Next, copy the current osmosisd binary into the cosmovisor/genesis folder with the following command
+Next, copy the current osmosisd binary into the cosmovisor/genesis folder:
 
 ```bash
 cp $GOPATH/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
 ```
 
-To check your work, ensure the version of cosmovisor and osmosisd are the same
+To check your work, ensure the version of cosmovisor and osmosisd are the same:
 
 ```bash
 cosmovisor version
@@ -150,7 +150,7 @@ osmosisd version
 
 These two command should both output 3.1.0-23-g517562d
 
-Before we start cosmovisor, lets prep the upgrade to v4.0.0-rc1 with the following commands
+Before we start cosmovisor, lets prep the upgrade to v4.0.0-rc1:
 
 ```bash
 mkdir -p ~/.osmosisd/cosmovisor/upgrades/v4/bin
@@ -161,13 +161,13 @@ cp build/osmosisd ~/.osmosisd/cosmovisor/upgrades/v4/bin
 cd $HOME
 ```
 
-Use the following command to ensure the validator file is in the gensesis state
+Use the following command to ensure the validator file is in the gensesis state:
 
 ```bash
 osmosisd unsafe-reset-all
 ```
 
-While we could start cosmovisor now with "cosmovisor start", lets set up a service with the following commands to allow it to run in the background as well as restart automatically if it runs into any problems!
+While we could start cosmovisor now with "cosmovisor start", lets set up a service to allow cosmovisor to run in the background as well as restart automatically if it runs into any problems:
 
 ```bash
 echo "[Unit]
@@ -189,26 +189,26 @@ WantedBy=multi-user.target
 " >cosmovisor.service
 ```
 
-Move this new file to the systemd directory
+Move this new file to the systemd directory:
 
 ```bash
 sudo mv cosmovisor.service /lib/systemd/system/cosmovisor.service
 ```
 
-Finally, run the following commands
+Finally, reload and start the service:
 
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start cosmovisor
 ```
 
-Check the status of your service
+Check the status of your service:
 
 ```bash
 sudo systemctl status cosmovisor
 ```
 
-To see live logs of your service
+To see live logs of your service:
 
 ```bash
 journalctl -u cosmovisor -f
@@ -218,6 +218,8 @@ The process should initialize and get to block 1122200, where it will automatica
 
 
 At around block height 1128853, when reading the logs you will see many notifications of "slashing and jailing validator". This is due to fact that many validators did not participate in the testnet and therefore get jailed at the same time (approx 30,000 blocks after the upgrade). In my experience, this may cause your node to reset due to a memory error. As long as you set up the service above, it will automatically reset and eventually get passed this difficult block. 
+
+Guide as of 15 November 2021. 
 
 ## Relayers
 
