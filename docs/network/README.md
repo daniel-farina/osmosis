@@ -155,7 +155,7 @@ Before we start cosmovisor, lets prep the upgrade to v4.0.0-rc1 with the followi
 ```bash
 mkdir -p ~/.osmosisd/cosmovisor/upgrades/v4/bin
 cd $HOME/osmosis
-git checkout v4.0.0
+git checkout v4.0.0-rc1
 make build
 cp build/osmosisd ~/.osmosisd/cosmovisor/upgrades/v4/bin
 cd $HOME
