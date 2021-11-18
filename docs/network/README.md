@@ -219,7 +219,7 @@ The process should initialize and get to block 1122200, where it will automatica
 
 At around block height 1128853, when reading the logs you will see many notifications of "slashing and jailing validator". This is due to fact that many validators did not participate in the testnet and therefore get jailed at the same time (approx 30,000 blocks after the upgrade). In my experience, this may cause your node to reset due to a memory error. As long as you set up the service above, it will automatically reset and eventually get passed this difficult block. 
 
-Guide as of 17 November 2021. 
+Guide as of 18 November 2021. 
 
 ## Relayers
 
